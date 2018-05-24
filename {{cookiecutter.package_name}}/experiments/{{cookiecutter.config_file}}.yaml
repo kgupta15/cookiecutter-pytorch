@@ -1,0 +1,23 @@
+train:
+  snapshot_save_iterations: 5000
+  image_save_iterations: 2500
+  image_display_iterations: 100
+  display: 1
+  hyperparameters:
+    lr: 0.001
+    num_epochs: 10
+  data:
+    batch_size: 50
+    valid_size: 0.1
+    random_seed: 0.4
+    shuffle: False
+    # If using CUDA, turn pin_memory=True and workers=1
+    pin_memory: True
+    workers: 1
+    augment: False
+    show_sample: True
+  logs: './logs'
+  distributed:
+    world_size: 1
+    dist_backend: tcp
+    dist_url: 'env://'

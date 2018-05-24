@@ -1,0 +1,6 @@
+pytorch
+torchvision
+tensorflow-gpu
+numpy
+cv2
+matplotlib

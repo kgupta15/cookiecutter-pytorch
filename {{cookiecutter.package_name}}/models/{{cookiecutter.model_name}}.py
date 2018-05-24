@@ -1,0 +1,1 @@
+{{cookiecutter.model_name}}.py
