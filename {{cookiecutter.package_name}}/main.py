@@ -191,7 +191,7 @@ def main(args):
     # optionally resume from a checkpoint
     if args.resume:
         if os.path.isfile(args.checkpoint):
-            print(""[!] Loading checkpoint '{}'".format(args.checkpoint))
+            print("[!] Loading checkpoint '{}'".format(args.checkpoint))
             checkpoint = torch.load(args.checkpoint)
             args.start_epoch = checkpoint['epoch']
             best_prec1 = checkpoint['best_prec1']
@@ -270,7 +270,7 @@ if __name__ == '__main__':
                         help="Turn ON for GPU support; default=0")
     parser.add_argument('--resume', type=int, default=0, \
                         help="Turn ON to resume training from latest checkpoint; default=0")
-    parser.add_argument('--chkpts', type=str, default="./checkpoints", \
+    parser.add_argument('--checkpoints', type=str, default="./checkpoints", \
                         help="Mention the dir that contains checkpoints")
     parser.add_argument('--config', type=str, required=True, \
                         help="Mention the file to load required configurations of the model")
