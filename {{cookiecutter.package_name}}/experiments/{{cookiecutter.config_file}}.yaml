@@ -6,7 +6,10 @@ train:
   hyperparameters:
     lr: 0.001
     num_epochs: 10
+    momentum: 1
+    weight_decay: 1
   data:
+    root: '/home/kapil/Documents/DeepLearning/Datasets/celeb'
     batch_size: 50
     valid_size: 0.1
     random_seed: 0.4
@@ -20,4 +23,4 @@ train:
   distributed:
     world_size: 1
     dist_backend: tcp
-    dist_url: 'env://'
+    dist_url: 'tcp://192.168.19.162:10443'
