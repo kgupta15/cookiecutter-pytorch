@@ -7,3 +7,6 @@ class Model(nn.Module):
     def __init__(self, config):
         super(Model, self).__init__()
         self.config = config
+
+    def forward(self, x):
+        pass

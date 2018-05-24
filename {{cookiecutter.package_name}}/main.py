@@ -276,9 +276,9 @@ if __name__ == '__main__':
                         help="Mention the file to load required configurations of the model")
     parser.add_argument('--seed', type=int, default=100, \
                         help="Seed for random function, default=100")
-    parser.add_argument('--pretrained', type=int, default=1, \
+    parser.add_argument('--pretrained', type=int, default=0, \
                         help="Turn ON if checkpoints of model available in /checkpoints dir")
-    parser.add_argument('-e', '--evaluate', dest='evaluate', action='store_true',
+    parser.add_argument('--evaluate', type=int, default=0, \
                         help='evaluate model on validation set')
     args = parser.parse_args()
 
