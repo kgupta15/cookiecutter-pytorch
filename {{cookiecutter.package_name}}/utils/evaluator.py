@@ -103,4 +103,4 @@ class Evaluator(object):
                 self.eval_loss, correct, len(self.data.dataset),
                 100. * correct / len(self.data.dataset)))
 
-            self.eval_loss
+            return self.eval_loss
