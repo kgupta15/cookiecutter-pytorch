@@ -9,8 +9,6 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-configure("logs/log-1")
-
 from .meter import AverageMeter
 from .visualizer import Visualizer
 

@@ -1,7 +1,15 @@
 #!/usr/bin/env python
 
+import os
+from functools import reduce
+import shutil
+
+from tensorboard_logger import configure, log_value
+import numpy as np
 import torch
 import torch.nn as nn
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class Evaluator(object):
     """docstring for Evaluate."""
@@ -71,6 +79,7 @@ class Evaluator(object):
             raise ValueError('[-] No Data available to train on')
 
         self.eval_loss = 0
+        correct = 0
         # eval mode
         self.model.eval()
         with torch.no_grad():
@@ -85,7 +94,7 @@ class Evaluator(object):
 
                 # get the index of the max log-probability
                 pred = output.max(1, keepdim=True)[1]
-                correct += pred.eq(target.view_as(pred)).sum().item()
+                correct += pred.eq(labels.view_as(pred)).sum().item()
 
             self.eval_loss /= len(self.data.dataset)
             log_value('eval_loss', self.eval_loss)
@@ -93,3 +102,5 @@ class Evaluator(object):
             print('\nEval Set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
                 self.eval_loss, correct, len(self.data.dataset),
                 100. * correct / len(self.data.dataset)))
+
+            self.eval_loss
