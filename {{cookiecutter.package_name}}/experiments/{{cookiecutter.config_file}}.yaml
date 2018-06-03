@@ -3,14 +3,19 @@ train:
   image_save_iterations: 2500
   image_display_iterations: 100
   display: 1
+  gpu: 1
   hyperparameters:
     lr: 0.001
-    num_epochs: 10
+    # turn value to zero to turn off learning rate decay
+    lr_decay: 0.5
+    # do not turn this to zero
+    lr_decay_epoch: 10
+    num_epochs: 100
     momentum: 1
     weight_decay: 1
   data:
-    root: '/home/kapil/Documents/DeepLearning/Datasets/celeb'
-    batch_size: 50
+    num_classes: 10
+    batch_size: 200
     valid_size: 0.1
     random_seed: 0.4
     shuffle: False
@@ -19,8 +24,14 @@ train:
     workers: 1
     augment: False
     show_sample: True
-  logs: './logs'
+  logs: 
+    loc: './logs'
+    log_interval: 10
   distributed:
     world_size: 1
     dist_backend: tcp
     dist_url: 'tcp://192.168.19.162:10443'
+  checkpoints:
+    loc: '/home/kapil/Desktop/pack/checkpoints'
+    ckpt_fname: 'checkpoint.pth.tar'
+    best_ckpt_fname: 'best_checkpoint.pth.tar'
