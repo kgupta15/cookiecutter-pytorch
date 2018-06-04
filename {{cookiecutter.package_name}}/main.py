@@ -79,9 +79,8 @@ def main(args):
 
     # define loss function (criterion) and optimizer
     criterion = nn.CrossEntropyLoss().to(device)
-    optimizer = torch.optim.SGD(model.parameters(), config.hyperparameters['lr'],
-                                momentum=config.hyperparameters['momentum'],
-                                weight_decay=config.hyperparameters['weight_decay'])
+    optimizer = torch.optim.Adam(model.parameters(), config.hyperparameters['lr'])
+                               # weight_decay=config.hyperparameters['weight_decay'])
 
     trainer.setCriterion(criterion)
     trainer.setOptimizer(optimizer)
