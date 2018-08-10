@@ -32,6 +32,6 @@ train:
     dist_backend: tcp
     dist_url: 'tcp://192.168.19.162:10443'
   checkpoints:
-    loc: '/home/kapil/Desktop/pack/checkpoints'
+    loc: './checkpoints'
     ckpt_fname: 'checkpoint.pth.tar'
     best_ckpt_fname: 'best_checkpoint.pth.tar'

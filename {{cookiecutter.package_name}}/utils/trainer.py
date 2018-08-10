@@ -4,7 +4,7 @@ import os
 from functools import reduce
 import shutil
 
-from tensorboard_logger import configure, log_value
+from tensorboardX import SummaryWriter
 import numpy as np
 import torch
 import torch.nn as nn
@@ -12,6 +12,7 @@ import torch.nn as nn
 from .meter import AverageMeter
 from .visualizer import Visualizer
 
+summary_writer = SummaryWriter()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class Trainer(object):
@@ -145,7 +146,7 @@ class Trainer(object):
             self.train_loss = loss.item()
             self.optimizer.step()
 
-            log_value('train_loss', loss.item())
+            summary_writer.add_scalar('train_loss', loss.item())
             if batch_idx % self.config.logs['log_interval'] == 0:
                 print(
                     'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\tlr: {:.6f}'.format(

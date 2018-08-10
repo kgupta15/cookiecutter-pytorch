@@ -18,13 +18,13 @@ import torchvision
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from torch.autograd import Variable
+from tensorboardX import SummaryWriter
 
 from dataloader import *
 from models import *
 from utils import *
 
 best_prec1 = 0
-configure("logs/log-1")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def main(args):
