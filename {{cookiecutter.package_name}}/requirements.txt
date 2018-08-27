@@ -5,3 +5,4 @@ numpy
 cv2
 matplotlib
 tensorboardX
+pyyaml
