@@ -1,16 +1,7 @@
 {
-    "author_name": "Kapil Gupta",
-    "author_email": "kpgupta98@gmail.com",
-
-    "package_name": "pack",
-    "package_version": "0.1.0",
-    "package_description": "Implementation of Paper : ",
-    "package_url": "https://github.com/daemonslayer/pack",
-    "config_file": "config",
-    "model_name": "awesome",
-    "dataloader_name": "my-dataloader",
-    
-    "readme_pypi_badge": true,
-    "readme_travis_badge": true,
-    "readme_travis_url": "https://travis-ci.org/daemonslayer/pack"
+    "project_name": "project_zero",
+    "experiment_title": "exp_1",
+    "experiment_config": "config",
+    "experiment_model": "model",
+    "experiment_dataloader": "data"
 }
