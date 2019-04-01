@@ -11,9 +11,8 @@ sudo apt install cookiecutter
 I am using default values for directory/file names. If edited, replace accordingly.
 
 ```bash
-cookiecutter https://github.com/daemonslayer/cookiecutter-pytorch
+cookiecutter https://github.com/daemonslayer/cookiecutter-pytorch --checkout experiments
 cd pack
-# if using gpu, replace with requirements-gpu.txt
 pip install -r requirements.txt
 make
 ```
