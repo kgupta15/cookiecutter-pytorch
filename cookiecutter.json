@@ -2,6 +2,9 @@
     "project_name": "project_zero",
     "experiment_title": "exp_1",
     "experiment_config": "config",
+    "experiment_dataloader": "dataloader",
+    "experiment_eval": "evaluator",
     "experiment_model": "model",
-    "experiment_dataloader": "data"
+    "experiment_trainer": "trainer",
+    "experiment_viz": "visualizer"
 }
