@@ -1,1 +1,1 @@
-from .awesome import *
+from .{{cookiecutter.model_name}} import *
