@@ -24,9 +24,9 @@ import torchvision.datasets as datasets
 from torch.autograd import Variable
 from tensorboardX import SummaryWriter
 
-from model import *
-from trainer import Trainer
-from evaluator import Evaluator
+from {{cookiecutter.experiment_model}} import *
+from {{cookiecutter.experiment_trainer}} import Trainer
+from {{cookiecutter.experiment_eval}} import Evaluator
 
 current_path = os.path.abspath(getsourcefile(lambda:0))
 current_dir = os.path.dirname(current_path)
