@@ -87,7 +87,7 @@ class Trainer(object):
         self.optimizer.load_state_dict(checkpoint['optimizer'])
 
         print("[#] Loaded Checkpoint '{}' (epoch {})"
-            .format(self.config.checkpoints['ckpt_fname'], self.start_epoch))
+            .format(self.config.checkpoints.ckpt_fname, self.start_epoch))
         return (self.start_epoch, self.best_precision)
 
     def adjust_learning_rate(self, epoch):
@@ -126,7 +126,7 @@ class Trainer(object):
             if batch_idx % self.config.logs.log_interval == 0:
                 print(
                     'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\tlr: {:.6f}'.format(
-                    self.start_epoch+epoch+1, batch_idx * len(images), len(self.data.dataset),
+                    epoch+1, batch_idx * len(images), len(self.data.dataset),
                     100. * batch_idx / len(self.data),
                     loss.item() / len(self.data), self.curr_lr)
                 )
