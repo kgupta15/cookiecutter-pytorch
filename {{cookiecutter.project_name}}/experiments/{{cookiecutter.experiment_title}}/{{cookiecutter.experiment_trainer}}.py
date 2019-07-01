@@ -1,4 +1,4 @@
-#!?usr/bin/env python
+#!/usr/bin/env python
 
 import os
 from functools import reduce
@@ -23,6 +23,8 @@ class Trainer(object):
         self.criterion = None
         self.optimizer = None
         self.curr_lr = 0
+        self.start_epoch = 0
+        self.best_precision = 0
         self.model = model
 
     def setConfig(self, config):
@@ -75,18 +77,18 @@ class Trainer(object):
         if checkpoint is None:
             path = os.path.join(self.config.checkpoints.loc, \
                     self.config.checkpoints.ckpt_fname)
+            checkpoint = torch.load(path)
         else:
             path = os.path.join(self.config.checkpoints.loc, checkpoint)
-        torch.load(path)
 
-        start_epoch = checkpoint['epoch']
-        best_precision = checkpoint['best_precision']
+        self.start_epoch = checkpoint['epoch']
+        self.best_precision = checkpoint['best_precision']
         self.model.load_state_dict(checkpoint['state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer'])
 
         print("[#] Loaded Checkpoint '{}' (epoch {})"
-            .format(self.config.checkpoints['ckpt_fname'], checkpoint['epoch']))
-        return (start_epoch, best_precision)
+            .format(self.config.checkpoints['ckpt_fname'], self.start_epoch))
+        return (self.start_epoch, self.best_precision)
 
     def adjust_learning_rate(self, epoch):
         """Sets the learning rate to the initial LR decayed by 10 every 30 epochs"""
@@ -124,7 +126,7 @@ class Trainer(object):
             if batch_idx % self.config.logs.log_interval == 0:
                 print(
                     'Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\tlr: {:.6f}'.format(
-                    epoch+1, batch_idx * len(images), len(self.data.dataset),
+                    self.start_epoch+epoch+1, batch_idx * len(images), len(self.data.dataset),
                     100. * batch_idx / len(self.data),
                     loss.item() / len(self.data), self.curr_lr)
                 )
