@@ -27,7 +27,7 @@ from tensorboardX import SummaryWriter
 from {{cookiecutter.experiment_model}} import *
 from {{cookiecutter.experiment_trainer}} import Trainer
 from {{cookiecutter.experiment_eval}} import Evaluator
-import mapper
+from mapper import *
 
 current_path = os.path.abspath(getsourcefile(lambda:0))
 current_dir = os.path.dirname(current_path)
@@ -54,7 +54,7 @@ def main(args):
     with open('config.yaml', 'r') as file:
     	stream = file.read()
     	config_dict = yaml.safe_load(stream)
-    	config = mapper(config_dict)
+    	config = mapper(**config_dict)
 
     model = CNN(config)
     plt.ion()
