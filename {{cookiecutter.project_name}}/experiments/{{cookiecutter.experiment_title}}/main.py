@@ -104,17 +104,18 @@ def main(args):
     if args.test:
     	pass
 
-    # optionally resume from a checkpoint
-    if config.train.resume:
-        trainer.load_saved_checkpoint(checkpoint=None)
-
     # Turn on benchmark if the input sizes don't vary
     # It is used to find best way to run models on your machine
     cudnn.benchmark = True
+    start_epoch = 0
     best_precision = 0
+    
+    # optionally resume from a checkpoint
+    if config.train.resume:
+        [start_epoch, best_precision] = trainer.load_saved_checkpoint(checkpoint=None)
 
     # change value to test.hyperparameters on testing
-    for epoch in range(config.train.hyperparameters.total_epochs):
+    for epoch in range(start_epoch, config.train.hyperparameters.total_epochs):
         if config.distributed:
             train_sampler.set_epoch(epoch)
 
