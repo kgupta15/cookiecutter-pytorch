@@ -27,6 +27,7 @@ from tensorboardX import SummaryWriter
 from {{cookiecutter.experiment_model}} import *
 from {{cookiecutter.experiment_trainer}} import Trainer
 from {{cookiecutter.experiment_eval}} import Evaluator
+import mapper
 
 current_path = os.path.abspath(getsourcefile(lambda:0))
 current_dir = os.path.dirname(current_path)
